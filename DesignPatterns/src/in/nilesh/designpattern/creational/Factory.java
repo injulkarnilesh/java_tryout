@@ -9,14 +9,14 @@ interface Product{
 class ProductOne implements Product{
 
 	public void printProductType() {
-		System.out.println("The Product One");
+		System.out.println("The Product One!");
 	}
 }
 
 class ProductTwo implements Product{
 
 	public void printProductType() {
-		System.out.println("The Product Two");
+		System.out.println("The Product Two!");
 	}
 }
 
