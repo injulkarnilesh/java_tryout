@@ -1,23 +1,26 @@
 package in.nilesh.designpattern.structural;
 
 abstract class Remote {
-	
+
 	protected EntertainmentDevice device;
-		
+
 	public abstract void fiveKeyPressed();
+
 	public abstract void sixKeyPressed();
+
 	public abstract void sevenKeyPressed();
+
 	public abstract void eightKeyPressed();
+
 	public abstract void nineKeyPressed();
 }
 
 class RemoteImpl extends Remote {
-	
-	
-	public RemoteImpl(EntertainmentDevice entertainmentDevice){
+
+	public RemoteImpl(EntertainmentDevice entertainmentDevice) {
 		this.device = entertainmentDevice;
-	} 
-	
+	}
+
 	public void fiveKeyPressed() {
 		device.fiveKeyPressed();
 	}
@@ -39,7 +42,7 @@ class RemoteImpl extends Remote {
 	}
 }
 
-abstract class EntertainmentDevice{
+abstract class EntertainmentDevice {
 	public void fiveKeyPressed() {
 		System.out.println("Voulme --");
 	}
@@ -55,7 +58,7 @@ abstract class EntertainmentDevice{
 	public abstract void nineKeyPressed();
 }
 
-class TVDevice extends EntertainmentDevice{
+class TVDevice extends EntertainmentDevice {
 
 	public void sevenKeyPressed() {
 		System.out.println("Channel --");
@@ -70,7 +73,7 @@ class TVDevice extends EntertainmentDevice{
 	}
 }
 
-class DVDDevice extends EntertainmentDevice{
+class DVDDevice extends EntertainmentDevice {
 
 	public void sevenKeyPressed() {
 		System.out.println("Preious Program");
@@ -84,8 +87,9 @@ class DVDDevice extends EntertainmentDevice{
 		System.out.println("Program Paused");
 	}
 }
+
 public class Bridge {
-	
+
 	public static void main(String[] args) {
 		System.out.println("*************** REMOTE FOR DVD ******************");
 		Remote dvdRemote = new RemoteImpl(new DVDDevice());
@@ -94,7 +98,7 @@ public class Bridge {
 		dvdRemote.sevenKeyPressed();
 		dvdRemote.eightKeyPressed();
 		dvdRemote.nineKeyPressed();
-		
+
 		System.out.println("*************** REMOTE FOR TV ******************");
 		Remote tvRemote = new RemoteImpl(new TVDevice());
 		tvRemote.fiveKeyPressed();
@@ -102,6 +106,6 @@ public class Bridge {
 		tvRemote.sevenKeyPressed();
 		tvRemote.eightKeyPressed();
 		tvRemote.nineKeyPressed();
-		
-	}	
+
+	}
 }
