@@ -37,7 +37,7 @@ class ProxyInternetAccess implements InternetAccess{
 	}
 	
 	private boolean isEmployeeIdAllowedInternetAccess(String empId){
-		if(empId.contains("n")){
+		if(empId.contains("n") || empId.contains("N")){
 			return true;
 		}
 		return false;
