@@ -1,5 +1,7 @@
 package in.algorithm.course.part.one.week.two.sort;
 
+import in.algorithm.course.util.ArrayUtils;
+
 public class SelectionSort {
     public static void sort(final Comparable [] arrayToSort) {
 
@@ -12,14 +14,10 @@ public class SelectionSort {
                 }
             }
 
-            swap(arrayToSort, i, min);
+            ArrayUtils.swap(arrayToSort, i, min);
         }
 
     }
 
-    private static void swap(final Comparable[] array, final int i, final int j) {
-        final Comparable toSwap = array[i];
-        array[i] = array[j];
-        array[j] = toSwap;
-    }
+
 }
