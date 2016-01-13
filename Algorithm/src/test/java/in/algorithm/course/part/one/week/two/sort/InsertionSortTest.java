@@ -1,7 +1,7 @@
 package in.algorithm.course.part.one.week.two.sort;
 
-import in.algorithm.course.part.one.week.in.algorithm.course.util.Check;
-import in.algorithm.course.part.one.week.in.algorithm.course.util.RandomInt;
+import in.algorithm.course.util.Check;
+import in.algorithm.course.util.RandomInt;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

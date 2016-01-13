@@ -1,4 +1,4 @@
-package in.algorithm.course.part.one.week.in.algorithm.course.util;
+package in.algorithm.course.util;
 
 public class Check {
 
