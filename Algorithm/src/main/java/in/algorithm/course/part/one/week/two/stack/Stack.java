@@ -2,17 +2,17 @@ package in.algorithm.course.part.one.week.two.stack;
 
 public interface Stack<T> {
 	
-	public T pop();
+	T pop();
 	
-	public void push(T item);
+	void push(T item);
 	
-	public boolean isEmpty();
+	boolean isEmpty();
 	
-	public class EmptyStack extends RuntimeException {
+	class EmptyStack extends RuntimeException {
 		
 	} 
 	
-	public class FullStack extends RuntimeException {
+	class FullStack extends RuntimeException {
 		
 	}
 	

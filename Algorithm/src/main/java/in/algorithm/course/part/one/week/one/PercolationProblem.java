@@ -1,6 +1,6 @@
 package in.algorithm.course.part.one.week.one;
 
-public class PerculationProblem {
+public class PercolationProblem {
 	
 	private static int CLOSED = 0;
 	private static int OPEN = 1;
@@ -11,7 +11,7 @@ public class PerculationProblem {
 	private int topMostConnectivityIndex;
 	private int bottomMostConnectivityIndex;
 	
-	public PerculationProblem(int gridSize) {
+	public PercolationProblem(int gridSize) {
 		this.gridSize = gridSize;
 		this.grid = new int[gridSize][gridSize];
 		this.dynamicConnectivity = new WeightedQuickUnionWithPathCompression((gridSize * gridSize) + 2);
@@ -27,7 +27,7 @@ public class PerculationProblem {
 		}
 	}
 
-	public boolean doesPerculate() {
+	public boolean doesPercolate() {
 		return dynamicConnectivity.isConnected(topMostConnectivityIndex, bottomMostConnectivityIndex);
 	}
 

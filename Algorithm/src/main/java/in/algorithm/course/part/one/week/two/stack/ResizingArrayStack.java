@@ -15,11 +15,11 @@ public class ResizingArrayStack implements Stack<String> {
 		if(index == 0) {
 			throw new EmptyStack();
 		}
-		String popedItem = items[--index];
+		String poppedItem = items[--index];
 		if(index != 0 && index == (items.length / 4)) {
 			setArraySize(items.length / 2);
 		}	
-		return popedItem;
+		return poppedItem;
 	}
 
 	@Override

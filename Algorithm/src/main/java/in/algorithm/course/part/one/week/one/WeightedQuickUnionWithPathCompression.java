@@ -1,7 +1,5 @@
 package in.algorithm.course.part.one.week.one;
 
-import org.ietf.jgss.Oid;
-
 public class WeightedQuickUnionWithPathCompression {
 
 	private int [] unionIds;
