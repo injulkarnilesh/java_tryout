@@ -52,7 +52,7 @@ Given set of N objects,
 
 Analysis of algorithms
 -------------
-![Common Order-of-growth classification](/src/main/resources/OrderOfGrowth.png)
+![Common Order-of-growth classification](https://raw.githubusercontent.com/injulkarnilesh/java_tryout/master/Algorithm/src/main/resources/OrderOfGrowth.png)
 
 #### Running Time
  - Best Case : Big Omega
