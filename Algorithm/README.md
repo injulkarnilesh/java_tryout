@@ -34,7 +34,7 @@ Given set of N objects,
  - Keep track of size of each tree (weight)
  - Connect root to smaller tree to root of larger tree.
  - Find: i and j are connected if root(i) == root(j)
-  - Union : connect root(i) to root(j) such that size(i)<=size(j) and update size array of larger tree increase by size of smaller tree attached.
+ - Union : connect root(i) to root(j) such that size(i)<=size(j) and update size array of larger tree increase by size of smaller tree attached.
 
 #### Weighted Quick Union with Path Compression
  - While finding root(i) set all elements visited to point to root(i) as parent.
@@ -47,7 +47,7 @@ Given set of N objects,
 | -------------        |:-------------:  | -----:    | -----:   |
 | QuickFind            | N               |  N        |  1       |
 | Quick Union          | N               |  N        |  N       |
-| Weighted Quick Union | N               |  log N    |  long N  |
+| Weighted Quick Union | N               |  log N    |  log N  |
 
 
 Analysis of algorithms
@@ -79,6 +79,7 @@ Stack and Queue
 -------------
  - Stack - LIFO
  - Queue - FIFO
+
 > Stack or queue implemented with array can be made resizable.
 When get’s full, use underlying array of twice the size.
 When on removing item, no of items become quarter of array size, use underlying array of half the size.
