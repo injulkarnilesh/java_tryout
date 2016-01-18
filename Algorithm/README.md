@@ -83,3 +83,48 @@ Stack and Queue
 > Stack or queue implemented with array can be made resizable.
 When get’s full, use underlying array of twice the size.
 When on removing item, no of items become quarter of array size, use underlying array of half the size.
+
+Sorting
+-------------
+#### Selection Sort
+ - In i<sup>th</sup> iteration, i in [0, N-2], find index min of smallest of remaining elements (>=i).
+ - Swap array[i] and array[min]
+ - N<sup>2</sup>/2 comparisons and N exchanges.
+ - O(N<sup>2</sup>)
+ 
+#### Insertion Sort
+ - In i<sup>th</sup> iteration, i in [0, N-1],
+    - j in [i, j>0] with j--, swap array[j] with array[j-1] as long as array[j] < array[j-1].
+ - 1/4 N<sup>2</sup> exchanges on average.
+ - O(N<sup>2</sup>)
+
+> An inversion is pair of values that are out of order. If in an array[N] with number of inversions < N, 
+then Insertion sort takes linear time.
+
+#### Shell Sort
+ - Insertion sort moves array elements one position at a time.
+ - h-sorting array means, in insertion sort move elements h positions at a time.
+ - Shell sort is multiple iteration of h-sorting the array with decreasing value of h till 1.
+ - h sequence 
+     - Powers of two 1, 2, 4, 8, 16, ... :x:
+     - Powers of two minus one 1, 3, 7, 15, 31, 63, ...  :x:
+     - (3x+1) 1, 4, 13, 40, 121, 364, ...   :heavy_check_mark:
+    
+ - O(N<sup>3/2</sup>)
+
+#### Merge Sort
+ - Divide and conquer
+ - Divide array into two halves, recursively sort each half, merge two halves in a sorted manner.
+ - Merge two halves
+     - Two halves to be merged are in an auxiliary array.
+     - Starting from beginning points of both arrays compare pointed elements, copy smaller element into main array and increment that pointer
+     - Do until some half or both are exhausted. If first some half exhausted, copy remaining of other half into main array.
+ - O(N log N)
+ - Requires extra space of auxiliary array, it better be created once and used rather than copying original array every time.
+ 
+> Stability 
+Sort algorithm is stable if an array of objects sorted with one criteria (Comparator) is sorted again with another criteria
+then for same values of second criteria array remains sorted with first criteria.
+Eg. If array of students is sorted by name and then by class, then in final array all students in same class remain sorted by name.
+Insertion sort and Merge sort are stable, Selection and Shell sort are not.
+
