@@ -4,7 +4,7 @@ import in.algorithm.course.util.ArrayUtils;
 
 public class KnuthShuffle {
 
-    public static void shuffle(final Integer[] arrayToShuffle) {
+    public static void shuffle(final Comparable[] arrayToShuffle) {
 
         for(int i = 0; i < arrayToShuffle.length; i++) {
             final int  j = randomIndexBefore(i);

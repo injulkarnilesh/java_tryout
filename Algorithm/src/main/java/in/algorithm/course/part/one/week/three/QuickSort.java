@@ -1,10 +1,12 @@
 package in.algorithm.course.part.one.week.three;
 
+import in.algorithm.course.part.one.week.two.sort.application.KnuthShuffle;
 import in.algorithm.course.util.ArrayUtils;
 
 public class QuickSort {
 
     public static void sort(final Comparable[] arrayToSort) {
+        KnuthShuffle.shuffle(arrayToSort);
         sortRecursively(arrayToSort, 0, arrayToSort.length-1);
     }
 
