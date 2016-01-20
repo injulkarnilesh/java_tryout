@@ -2,9 +2,7 @@ package in.algorithm.course.part.one.week.three;
 
 import in.algorithm.course.util.Check;
 import in.algorithm.course.util.RandomInt;
-import org.junit.Assert;
 import org.junit.Test;
-
 
 import static org.junit.Assert.assertTrue;
 
@@ -31,13 +29,13 @@ public class QuickSortTest {
 
     private void verifyElementsAfterPartitionAreLarger(final Integer[] array, final int index) {
         for (int i = index+1; i < array.length; i++) {
-            Assert.assertTrue(array[index].compareTo(array[i]) <= 0);
+            assertTrue(array[index].compareTo(array[i]) <= 0);
         }
     }
 
     private void verifyElementsBeforePartitionAreSmaller(final Integer[] array, final int index) {
         for (int i = index - 1; i >= 0; i--) {
-            Assert.assertTrue(array[index].compareTo(array[i]) >= 0);
+            assertTrue(array[index].compareTo(array[i]) >= 0);
         }
     }
 
@@ -62,4 +60,25 @@ public class QuickSortTest {
         assertTrue(Check.isSorted(arrayToSort));
     }
 
+
+    @Test
+    public void shouldSortWith3WayPartitioning() throws Exception {
+        final int size = RandomInt.next(100, 1000);
+        final Integer[] arrayToSort = getRandomArrayOfSize(size);
+        haveDuplicatesInArray(arrayToSort);
+
+        QuickSort.sortWith3WayPartitioning(arrayToSort);
+
+        assertTrue(Check.isSorted(arrayToSort));
+    }
+
+    private void haveDuplicatesInArray(final Integer[] array) {
+        for(int i = 0; i < 5; i++) {
+            final int fromIndex = RandomInt.next(array.length);
+            for(int j = 0; j < 5; j++) {
+                final int toIndex = RandomInt.next(array.length);
+                array[toIndex] = array[fromIndex];
+            }
+        }
+    }
 }

@@ -14,8 +14,8 @@ public class QuickSort {
         if(low >= high)
             return;
         final int partitionIndex = partition(array, low, high);
-        sortRecursively(array, low, partitionIndex-1);
-        sortRecursively(array, partitionIndex+1, high);
+        sortRecursively(array, low, partitionIndex - 1);
+        sortRecursively(array, partitionIndex + 1, high);
     }
 
     public static int partition(final Comparable[] arrayToPartition, final int low, final int high) {
@@ -44,4 +44,34 @@ public class QuickSort {
         ArrayUtils.swap(arrayToPartition, j, low);
         return j;
     }
+
+    public static void sortWith3WayPartitioning(final Comparable[] arrayToSort) {
+        KnuthShuffle.shuffle(arrayToSort);
+        sortRecursivelyWith3WayPartitioning(arrayToSort, 0, arrayToSort.length - 1);
+    }
+
+    private static void sortRecursivelyWith3WayPartitioning(final Comparable[] array, final int low, final int high) {
+        if(low >= high)
+            return;
+
+        int i = low;
+        int v = low;
+        int j = high;
+
+        while (i <= j) {
+            if(array[i].compareTo(array[v]) < 0) {
+                ArrayUtils.swap(array, i++, v++);
+            }
+            else if(array[i].compareTo(array[v]) > 0) {
+                ArrayUtils.swap(array, i, j--);
+            }
+            else {
+                i++;
+            }
+        }
+
+        sortRecursivelyWith3WayPartitioning(array, low, v-1);
+        sortRecursivelyWith3WayPartitioning(array, j+1, high);
+    }
+    
 }
