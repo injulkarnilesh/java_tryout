@@ -128,3 +128,29 @@ then for same values of second criteria array remains sorted with first criteria
 Eg. If array of students is sorted by name and then by class, then in final array all students in same class remain sorted by name.
 Insertion sort and Merge sort are stable, Selection and Shell sort are not.
 
+##### Quick Sort
+ - Steps
+     - Shuffle the array to avoid worst case.
+     - Partition array with pivot element (first generally) and place it at index i
+     - Such that no larger elements on left side and no smaller element on right side of array[i]
+     - Sort each piece the same way.
+ - Partition with low, high
+     - i from low + 1 towards right (i++) as long as a[i] < a[low]
+     - j from high towards left (j--) as long as a[j] > a[low]
+     - continue until i and j cross, and are within array bounds, then swap a[low] with a[j].
+ - Worst case O(N<sup>2</sup>), already sorted.
+ - Average case O(N Log N)  ~ 1.39 N Log N
+ - Not stable but in place sorting, no extra array needed.
+ - With many duplicate values quick sort becomes quadratic.
+ - Dijkstra's 3 way partitioning
+     - a[low] be pivot
+     - v = i = low and j = high
+     - a[v] > a[i] then swap(v, i)  i++ and v++
+     - a[v] < a[i] then swap(i, j)  j--
+     - a[v] == a[i] then i++
+     - until i and j have crossed
+     - then array between v and j is sorted and elements between v and i are same 
+     - then sort pieces, low to v-1 and j+1 to high
+ 
+ 
+     
