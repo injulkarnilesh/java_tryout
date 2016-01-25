@@ -128,7 +128,7 @@ then for same values of second criteria array remains sorted with first criteria
 Eg. If array of students is sorted by name and then by class, then in final array all students in same class remain sorted by name.
 Insertion sort and Merge sort are stable, Selection and Shell sort are not.
 
-##### Quick Sort
+#### Quick Sort
  - Steps
      - Shuffle the array to avoid worst case.
      - Partition array with pivot element (first generally) and place it at index i
