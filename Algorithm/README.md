@@ -123,9 +123,9 @@ then Insertion sort takes linear time.
  - Requires extra space of auxiliary array, it better be created once and used rather than copying original array every time.
  
 > Stability 
-Sort algorithm is stable if an array of objects sorted with one criteria (Comparator) is sorted again with another criteria
+<br> Sort algorithm is stable if an array of objects sorted with one criteria (Comparator) is sorted again with another criteria
 then for same values of second criteria array remains sorted with first criteria.
-Eg. If array of students is sorted by name and then by class, then in final array all students in same class remain sorted by name.
+<br> Eg. If array of students is sorted by name and then by class, then in final array all students in same class remain sorted by name.
 Insertion sort and Merge sort are stable, Selection and Shell sort are not.
 
 #### Quick Sort
@@ -159,9 +159,10 @@ Priority Queue
    appropriate place for new element. Dequeue operation then is very easy, remove first element from head.
  - UnOrdered Implementation does not maintain order, so new element is simply inserted at head. But while dequeue it finds 
    smallest or largest element, removes and returns it.
+
 > Application Example :
-To find out largest N elements from very large set of elements without having those all in the memory at a time. 
-It can be implemented with MinPriorityQueue where dequeue operation will always remove the smallest in the queue. 
-Iterate over all these elements one at a time, insert it into the priority queue, if queue's size is above N, dequeue one element so that smallest will be removed.
+<br> To find out largest N elements from very large set of elements without having those all in the memory at a time. 
+<br> It can be implemented with MinPriorityQueue where dequeue operation will always remove the smallest in the queue. 
+<br> Iterate over all these elements one at a time, insert it into the priority queue, if queue's size is above N, dequeue one element so that smallest will be removed.
 
      
