@@ -11,7 +11,7 @@ class UnOrderedPriorityQueue<T extends Comparable> extends AbstractPriorityQueue
 
     @Override
     public void enqueue(final T item) {
-        final Node<T> newNode = new Node<T>(item);
+        final Node<T> newNode = new Node(item);
         newNode.setNext(getRoot());
         setRoot(newNode);
     }
@@ -39,7 +39,10 @@ class UnOrderedPriorityQueue<T extends Comparable> extends AbstractPriorityQueue
         }
 
         if(selection == getRoot()) {
-            setRoot(null);
+            if(previous == getRoot()) {
+                setRoot(null);
+            }
+            setRoot(selection.getNext());
         } else {
             previousSelection.setNext( selection.getNext() );
         }
