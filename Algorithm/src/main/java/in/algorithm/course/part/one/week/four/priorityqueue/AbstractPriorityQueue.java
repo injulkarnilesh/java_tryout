@@ -31,4 +31,16 @@ abstract class AbstractPriorityQueue<T extends Comparable> implements PriorityQu
     protected void setRoot(final Node<T> root) {
         this.root = root;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder(512);
+        Node<T> pointer = root;
+        while (pointer != null) {
+            builder.append(pointer);
+            builder.append(" => ");
+            pointer = pointer.getNext();
+        }
+        return builder.toString();
+    }
 }
