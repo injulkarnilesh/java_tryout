@@ -152,5 +152,16 @@ Insertion sort and Merge sort are stable, Selection and Shell sort are not.
      - then array between v and j is sorted and elements between v and i are same 
      - then sort pieces, low to v-1 and j+1 to high
  
- 
+Priority Queue
+------------- 
+ - Dequeue operation always removes smallest/largest element in the queue.
+ - Ordered Implementation maintains order of elements so while inserting it needs to iterate current structure to find 
+   appropriate place for new element. Dequeue operation then is very easy, remove first element from head.
+ - UnOrdered Implementation does not maintain order, so new element is simply inserted at head. But while dequeue it finds 
+   smallest or largest element, removes and returns it.
+> Application Example :
+To find out largest N elements from very large set of elements without having those all in the memory at a time. 
+It can be implemented with MinPriorityQueue where dequeue operation will always remove the smallest in the queue. 
+Iterate over all these elements one at a time, insert it into the priority queue, if queue's size is above N, dequeue one element so that smallest will be removed.
+
      
