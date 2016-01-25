@@ -39,9 +39,6 @@ class UnOrderedPriorityQueue<T extends Comparable> extends AbstractPriorityQueue
         }
 
         if(selection == getRoot()) {
-            if(previous == getRoot()) {
-                setRoot(null);
-            }
             setRoot(selection.getNext());
         } else {
             previousSelection.setNext( selection.getNext() );
