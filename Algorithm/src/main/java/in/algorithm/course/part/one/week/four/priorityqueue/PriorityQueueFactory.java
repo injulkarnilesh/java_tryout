@@ -1,5 +1,7 @@
 package in.algorithm.course.part.one.week.four.priorityqueue;
 
+import in.algorithm.course.part.one.week.four.heap.BinaryHeapMaxPriorityQueue;
+
 public class PriorityQueueFactory {
 
     public static <T extends Comparable> PriorityQueue<T> newUnOrderedMinPriorityQueue() {
@@ -16,6 +18,10 @@ public class PriorityQueueFactory {
 
     public static <T extends Comparable> PriorityQueue<T> newOrderedMaxPriorityQueue() {
         return new OrderedPriorityQueue<>(FIRST_SMALLER());
+    }
+
+    public static <T extends Comparable> PriorityQueue<T> newBinaryHeapPriorityQueue(final int capacity) {
+        return new BinaryHeapMaxPriorityQueue<>(capacity);
     }
 
     public static <T extends Comparable> OrderDecider<T> FIRST_SMALLER() {

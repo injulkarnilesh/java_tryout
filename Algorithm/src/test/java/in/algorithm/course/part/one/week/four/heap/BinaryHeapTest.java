@@ -5,6 +5,10 @@ import in.algorithm.course.util.RandomInt;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class BinaryHeapTest {
 
     @Test
@@ -14,30 +18,30 @@ public class BinaryHeapTest {
         heap.insert(itemFive);
         Integer[] heapData = heapData(heap);
         //5
-        Assert.assertEquals(Integer.valueOf(itemFive), heapData[1]);
+        assertEquals(Integer.valueOf(itemFive), heapData[1]);
 
         int itemFour = 4;
         heap.insert(itemFour);
         heapData = heapData(heap);
         //5, 4
-        Assert.assertEquals(Integer.valueOf(itemFour), heapData[2]);
+        assertEquals(Integer.valueOf(itemFour), heapData[2]);
 
         int itemSeven = 7;
         heap.insert(itemSeven);
         heapData = heapData(heap);
         //7, 4, 5
-        Assert.assertEquals(Integer.valueOf(itemSeven), heapData[1]);
-        Assert.assertEquals(Integer.valueOf(itemFour), heapData[2]);
-        Assert.assertEquals(Integer.valueOf(itemFive), heapData[3]);
+        assertEquals(Integer.valueOf(itemSeven), heapData[1]);
+        assertEquals(Integer.valueOf(itemFour), heapData[2]);
+        assertEquals(Integer.valueOf(itemFive), heapData[3]);
 
         int itemTen = 10;
         heap.insert(itemTen);
         heapData = heapData(heap);
         //10, 7, 5, 4
-        Assert.assertEquals(Integer.valueOf(itemTen), heapData[1]);
-        Assert.assertEquals(Integer.valueOf(itemSeven), heapData[2]);
-        Assert.assertEquals(Integer.valueOf(itemFive), heapData[3]);
-        Assert.assertEquals(Integer.valueOf(itemFour), heapData[4]);
+        assertEquals(Integer.valueOf(itemTen), heapData[1]);
+        assertEquals(Integer.valueOf(itemSeven), heapData[2]);
+        assertEquals(Integer.valueOf(itemFive), heapData[3]);
+        assertEquals(Integer.valueOf(itemFour), heapData[4]);
     }
 
     @Test
@@ -49,7 +53,7 @@ public class BinaryHeapTest {
 
         for (int i = 0; i < size; i++) {
             heap.insert(array[i]);
-            Assert.assertEquals(i + 1, heapData(heap)[1].intValue());
+            assertEquals(i + 1, heapData(heap)[1].intValue());
         }
     }
 
@@ -79,25 +83,25 @@ public class BinaryHeapTest {
 
         //10, 7, 5, 4, 3, 2
         int max = heap.deleteMax();
-        Assert.assertEquals(itemTen, max);
+        assertEquals(itemTen, max);
 
         //7, 4, 5, 2, 3
         Integer[] heapData = heapData(heap);
-        Assert.assertEquals(itemSeven, heapData[1].intValue());
-        Assert.assertEquals(itemFour, heapData[2].intValue());
-        Assert.assertEquals(itemFive, heapData[3].intValue());
-        Assert.assertEquals(itemTwo, heapData[4].intValue());
-        Assert.assertEquals(itemThree, heapData[5].intValue());
+        assertEquals(itemSeven, heapData[1].intValue());
+        assertEquals(itemFour, heapData[2].intValue());
+        assertEquals(itemFive, heapData[3].intValue());
+        assertEquals(itemTwo, heapData[4].intValue());
+        assertEquals(itemThree, heapData[5].intValue());
 
         max = heap.deleteMax();
-        Assert.assertEquals(itemSeven, max);
+        assertEquals(itemSeven, max);
 
         //5, 4, 3, 2
         heapData = heapData(heap);
-        Assert.assertEquals(itemFive, heapData[1].intValue());
-        Assert.assertEquals(itemFour, heapData[2].intValue());
-        Assert.assertEquals(itemThree, heapData[3].intValue());
-        Assert.assertEquals(itemTwo, heapData[4].intValue());
+        assertEquals(itemFive, heapData[1].intValue());
+        assertEquals(itemFour, heapData[2].intValue());
+        assertEquals(itemThree, heapData[3].intValue());
+        assertEquals(itemTwo, heapData[4].intValue());
     }
 
     @Test
@@ -114,7 +118,7 @@ public class BinaryHeapTest {
         }
 
         for(int i = size; i > 0; i--) {
-            Assert.assertEquals(i, heap.deleteMax().intValue());
+            assertEquals(i, heap.deleteMax().intValue());
         }
 
     }
@@ -129,18 +133,18 @@ public class BinaryHeapTest {
 
 
     @Test (expected = BinaryHeap.EmptyHeap.class)
-    public void shouldThrowExceptionOnDeleteWhenEmptyHeap() throws Exception {
+    public void shouldThrowEmptyHeapExceptionOnDeleteWhenEmptyHeap() throws Exception {
         final BinaryHeap<String> heap = new BinaryHeapImpl(5);
-        Assert.assertTrue(heap.isEmpty());
+        assertTrue(heap.isEmpty());
         heap.insert("WHAT");
-        Assert.assertFalse(heap.isEmpty());
+        assertFalse(heap.isEmpty());
         heap.deleteMax();
 
         heap.deleteMax();
     }
 
     @Test (expected = BinaryHeap.FullHeap.class)
-    public void shouldThrowFullHeapOnInsertingIntoFullHeap() throws Exception {
+    public void shouldThrowFullHeapExceptionOnInsertingIntoFullHeap() throws Exception {
         final BinaryHeap<String> heap = new BinaryHeapImpl(0);
         heap.insert("WHERE");
     }
