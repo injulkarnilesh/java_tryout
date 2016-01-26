@@ -12,6 +12,11 @@ public class BinaryHeapZeroIndexedImpl<T extends Comparable> implements BinaryHe
         N = -1;
     }
 
+    public BinaryHeapZeroIndexedImpl(final Comparable[] array) {
+        data = (T[]) array;
+        N = -1;
+    }
+
     @Override
     public boolean isEmpty() {
         return N == -1;
