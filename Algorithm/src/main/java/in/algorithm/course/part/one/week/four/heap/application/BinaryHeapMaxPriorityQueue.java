@@ -1,5 +1,7 @@
-package in.algorithm.course.part.one.week.four.heap;
+package in.algorithm.course.part.one.week.four.heap.application;
 
+import in.algorithm.course.part.one.week.four.heap.BinaryHeap;
+import in.algorithm.course.part.one.week.four.heap.BinaryHeapImpl;
 import in.algorithm.course.part.one.week.four.priorityqueue.PriorityQueue;
 
 public class BinaryHeapMaxPriorityQueue<T extends Comparable> implements PriorityQueue<T> {

@@ -1,6 +1,6 @@
 package in.algorithm.course.part.one.week.four.priorityqueue;
 
-import in.algorithm.course.part.one.week.four.heap.BinaryHeapMaxPriorityQueue;
+import in.algorithm.course.part.one.week.four.heap.application.BinaryHeapMaxPriorityQueue;
 
 public class PriorityQueueFactory {
 

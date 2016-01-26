@@ -1,4 +1,7 @@
-package in.algorithm.course.part.one.week.four.heap;
+package in.algorithm.course.part.one.week.four.heap.application;
+
+import in.algorithm.course.part.one.week.four.heap.BinaryHeap;
+import in.algorithm.course.part.one.week.four.heap.BinaryHeapZeroIndexedImpl;
 
 public class HeapSort {
 
