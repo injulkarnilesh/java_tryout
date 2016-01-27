@@ -151,6 +151,25 @@ Insertion sort and Merge sort are stable, Selection and Shell sort are not.
      - until i and j have crossed
      - then array between v and j is sorted and elements between v and i are same 
      - then sort pieces, low to v-1 and j+1 to high
+     
+#### Heap Sort
+ - Uses binary heap data structure.
+ - Steps
+     - Create max heap within the same array with all N elements.
+     - Repeatedly (N times) remove max element from the max heap. Do not null out the deleted element in the heap.
+ - In place sorting with O (N log N). 
+ 
+  
+| Sort Algorithm      | In place          | Stable            | Worst             | Average           | Best              |  Remarks        |
+| -------------       |:------------:     |:------------:     |:------------:     |:------------:     |:------------:     |:------------:   |
+| Selection           |:heavy_check_mark: | :x:               | N<sup>2</sup>/2   |N<sup>2</sup>/2    |N<sup>2</sup>/2    | N exchanges     |
+| Insertion           |:heavy_check_mark: |:heavy_check_mark: | N<sup>2</sup>/2   |N<sup>2</sup>/4    |N                  | Used for small N or partially sorted  |
+| Shell               |:heavy_check_mark: |:x:                |  :question:       | :question:        |N                  | Tight code and sub quadratic |
+| Quick               |:heavy_check_mark: |:x:                | N<sup>2</sup>/2   | 2 N log N         | N log N           | Fastest in practice |
+| 3 Way Quick         |:heavy_check_mark: |:x:                | N<sup>2</sup>/2   | 2 N log N         | N                 | Improved quick sort for duplicate keys |
+| Merge               |:x:                |:heavy_check_mark: | N log N           | N log N           | N log N           | Guaranteed N log N, stable |
+| Heap                |:heavy_check_mark: |:x:                | 2 N log N         | 2 N log N         | N log N           | Guaranteed N log N, in place |
+ 
  
 Priority Queue
 ------------- 
@@ -165,4 +184,28 @@ Priority Queue
 <br> It can be implemented with MinPriorityQueue where dequeue operation will always remove the smallest in the queue. 
 <br> Iterate over all these elements one at a time, insert it into the priority queue, if queue's size is above N, dequeue one element so that smallest will be removed.
 
+| Implementation           | Insert         | DelMax         | Max         |
+| -------------            |:-------------: |:-------------: |:----------: |
+| UnOrdered List of Array  |  1             | N              | N           |
+| Ordered List of Array    |  N             | 1              | 1           |
+| Binary Heap              |  log N         | log N          | 1           |
+
+
+Binary Heap
+-------------
+ - Complete binary tree : Leaf nodes are at level height or height-1. height = log N where N is no of nodes.
+ - Heap Ordered binary tree : Parent node value is no smaller than children node values.
+ - Array implementation :
+     - Indies start with 1. Also possible with 0 but, with 1 calculations are simplified.
+     - Nodes in order from top to bottom, left to right. 
+     - parentOf(n) = n/2, leftChildOf(n) = n*2, rightChildOf(n) = (n*2 + 1) for 1 indexed array representation.
+ - Promotion of node if its value larger than parent.
+     - Swap it with parent then check and continue the parent with grand-parent and so on until root.
+     - Used in inserting new node. Insert new node at last index and check if promotion needed.
+ - Demotion of node if its value is smaller than any of its children.
+     - Swap it with child with larger value, then check that child with its children and so on until no more children.
+     - Used in deleting max valued node in heap, that is at root. 
+     - Exchange root node with last node, exclude this root node at last by reducing N index. Demote the new root node.
+ - Applications : Binary Heap Priority Queue, Heap Sort.
      
+ 
