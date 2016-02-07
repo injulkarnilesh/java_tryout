@@ -208,4 +208,38 @@ Binary Heap
      - Exchange root node with last node, exclude this root node at last by reducing N index. Demote the new root node.
  - Applications : Binary Heap Priority Queue, Heap Sort.
      
- 
+
+Symbol Table
+-------------
+ - Key value pairs.
+ - One value per key, pu will add new key value pair or update value to new one if key exist.
+ - Map in java
+
+#### UnOrdered Symbol Table
+ - Linked list of Key-Value pairs.
+ - Search : Scan through all keys until match if no match return null.
+ - Insert : Scan through all keys until match. If match found update the value, if not insert new pair to front.
+
+#### Ordered Symbol Table
+ - Pairs are maintained in order of keys.
+ - Two arrays, of for keys and other for values.
+ - Insert new value need to shift all greater keys and values forward.
+ - Delete needs to shift all greater keys and values backward.
+
+| Symbol Table Implementation               | Sequential Search | Binary Search   | 
+| -------------                             |:-------------:    |:-------------:  |
+| Search                                    |  N                | log N           |
+| Insert / Delete                           |  N                | N               |
+| Min / Max                                 |  N                | 1               |
+| Floor / Ceiling                           |  N                | log N           |
+| Rank                                      |  N                | log N           |
+| Select                                    |  N                | 1               |
+| Ordered Iteration                         |  N log N          | N               |
+
+
+
+| Symbol Table Implementation               | Worst Case <br/> Search | Worst Case <br/> Insert | Average Case <br/> Search Hit | Average Case <br/> Insert |
+| -------------                             |:-------------:          |:-------------:          |:----------:                   |:-------------:            |
+| Sequential Search  <br/> (UnOrdered List) |  N                      | N                       | N/2                           | N                         |
+| Binary Search <br/> (Ordered  Array)      |  log N                  | N                       | log N                         | N/2                       |
+
