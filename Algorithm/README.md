@@ -226,15 +226,16 @@ Symbol Table
  - Insert new value need to shift all greater keys and values forward.
  - Delete needs to shift all greater keys and values backward.
 
-| Symbol Table Implementation               | Sequential Search | Binary Search   | 
-| -------------                             |:-------------:    |:-------------:  |
-| Search                                    |  N                | log N           |
-| Insert / Delete                           |  N                | N               |
-| Min / Max                                 |  N                | 1               |
-| Floor / Ceiling                           |  N                | log N           |
-| Rank                                      |  N                | log N           |
-| Select                                    |  N                | 1               |
-| Ordered Iteration                         |  N log N          | N               |
+| Symbol Table Implementation               | Sequential Search | Binary Search   |BST                |  
+| -------------                             |:-------------:    |:-------------:  |:--------:         |
+| Search                                    |  N                | log N           | h (Height ~log N) |
+| Insert                                    |  N                | N               | h                 |
+| Delete                                    |  N/2              | N/2             | SquareRoot(N)     |
+| Min / Max                                 |  N                | 1               | h                 | 
+| Floor / Ceiling                           |  N                | log N           | h                 |
+| Rank                                      |  N                | log N           | h                 |
+| Select                                    |  N                | 1               | h                 |
+| Ordered Iteration                         |  N log N          | N               | N                 |
 
 
 
@@ -242,4 +243,25 @@ Symbol Table
 | -------------                             |:-------------:          |:-------------:          |:----------:                   |:-------------:            |
 | Sequential Search  <br/> (UnOrdered List) |  N                      | N                       | N/2                           | N                         |
 | Binary Search <br/> (Ordered  Array)      |  log N                  | N                       | log N                         | N/2                       |
+| Using BST                                 |  N                      | N                       | log N                         | log N                     |
 
+Binary Search Tree
+-------------
+- Binary Tree where each node has a key whose value is larger than all keys in left subtree and smaller than all keys in right subtree.
+- Each node has value, count of number of nodes in the subtree rooted at it, pointers to left and right subtrees.
+- Search 
+    - If lesser go left, if larger go right, if equal search hit, if null miss.
+- Insert 
+    - If lesser go left, if larger go right, if null insert, if equal update value.
+- Number of compares for search/insert is equal to 1 + depth of node. Average ~ 2 log N.
+- Delete 
+    - Case : Node to delete has no children
+        - Set parent's pointer to this node as null, update counts.
+    - Case : Node to delete has one child
+        - Set parent's pointer to this node to the child node of this node, update counts.
+    - Case : Node to delete has two children (Hibbard Deletion)
+        - Find smallest node in right subtree of the node to delete
+        - Put the value of that minimum node in place of node to delete
+        - Delete that minimum in that right subtree
+        - Update the counts
+        - But leaves the tree un-symmetric.
