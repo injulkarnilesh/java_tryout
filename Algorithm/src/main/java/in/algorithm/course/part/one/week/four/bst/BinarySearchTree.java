@@ -17,4 +17,18 @@ public interface BinarySearchTree<T> {
     T min();
 
     T max();
+
+    int rank(T item);
+
+    T floor(T item);
+
+    T ceiling(T item);
+
+    T select(int item);
+
+    void deleteMin();
+
+    void deleteMax();
+
+    int size(T min, T max);
 }

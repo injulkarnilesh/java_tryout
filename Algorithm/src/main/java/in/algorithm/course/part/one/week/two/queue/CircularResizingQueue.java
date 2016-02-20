@@ -63,13 +63,13 @@ public class CircularResizingQueue implements Queue<String> {
 		String item = items[head];
 		count--;
 		head = nextCircularIndex(head);
-		if(isArrayQuaterFull()) {
+		if(isArrayQuarterFull()) {
 			setArraySizeTo(items.length / 2);
 		}
 		return item;
 	}
 	
-	private boolean isArrayQuaterFull() {
+	private boolean isArrayQuarterFull() {
 		return count == (items.length / 4);
 	}
 	

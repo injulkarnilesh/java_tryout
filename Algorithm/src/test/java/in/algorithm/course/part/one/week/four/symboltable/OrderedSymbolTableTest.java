@@ -193,6 +193,29 @@ public class OrderedSymbolTableTest {
     }
 
     @Test
+    public void shouldGetLargestKeySmallerThanOrEqualToInputForInputInBetweenElements() throws Exception {
+        final int times = RandomInt.next(10,20);
+        final int size = RandomInt.next(100, 200);
+        final Integer[] values = new Integer[size];
+        for (int i = 0; i < size; i++) {
+            values[i] = i * times;
+        }
+
+        KnuthShuffle.shuffle(values);
+
+        for (int i = 0; i < size; i++) {
+            symbolTable.put(values[i], RandomString.next());
+        }
+
+        for (int i = 1; i < size-1; i++) {
+            final int input = i * times - RandomInt.next(times);
+            final int expectedFloor = (int) Math.floor((double) input / times) * times;
+
+            assertEquals(Integer.valueOf(expectedFloor), symbolTable.floor(input));
+        }
+    }
+
+    @Test
     public void shouldGetSmallestKeyGreaterThanOrEqualToInput() throws Exception {
         final int size = RandomInt.next(10, CAPACITY_MIN);
         for (int i = 1; i <= size; i++) {
@@ -207,6 +230,30 @@ public class OrderedSymbolTableTest {
         assertEquals(size, symbolTable.ceiling(size).intValue());
 
         assertNull(symbolTable.ceiling(RandomInt.next(size+1, CAPACITY_MAX)));
+    }
+
+    @Test
+    public void shouldGetSmallestKeyGreaterThanOrEqualToInputForInputInBetweenElements() throws Exception {
+        final int times = RandomInt.next(10,20);
+        final int size = RandomInt.next(100, 200);
+        final Integer[] values = new Integer[size];
+        for (int i = 0; i < size; i++) {
+            values[i] = i * times;
+
+        }
+
+        KnuthShuffle.shuffle(values);
+
+        for (int i = 0; i < size; i++) {
+            symbolTable.put(values[i], RandomString.next());
+        }
+
+        for (int i = 1; i < size-1; i++) {
+            final int input = i * times - RandomInt.next(times);
+            final int expectedFloor = (int) Math.ceil((double) input / times) * times;
+
+            assertEquals(Integer.valueOf(expectedFloor), symbolTable.ceiling(input));
+        }
     }
 
     @Test

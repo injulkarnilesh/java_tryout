@@ -21,7 +21,6 @@ public class BinarySearchTreeImpl<T extends Comparable> implements BinarySearchT
         }
 
         root = put(root, item);
-
     }
 
     private Node<T> put(final Node<T> currentNode, final T value) {
@@ -63,8 +62,7 @@ public class BinarySearchTreeImpl<T extends Comparable> implements BinarySearchT
             return null;
         }
 
-        final Node<T> match = get(root, item);
-        return Objects.isNull(match) ? null : match.getValue();
+        return safeReadValueOfNode(get(root, item));
     }
 
     private Node<T> get(final Node<T> currentNode, final T value) {
@@ -145,8 +143,7 @@ public class BinarySearchTreeImpl<T extends Comparable> implements BinarySearchT
 
     @Override
     public T min() {
-        final Node<T> minNode = min(root);
-        return Objects.isNull(minNode) ? null : minNode.getValue();
+        return safeReadValueOfNode(min(root));
     }
 
     private Node<T> min(final Node<T> node) {
@@ -164,8 +161,7 @@ public class BinarySearchTreeImpl<T extends Comparable> implements BinarySearchT
 
     @Override
     public T max() {
-        final Node<T> maxNode = max(root);
-        return Objects.isNull(maxNode) ? null : maxNode.getValue();
+        return safeReadValueOfNode(max(root));
     }
 
     private Node<T> max(final Node<T> node) {
@@ -181,6 +177,180 @@ public class BinarySearchTreeImpl<T extends Comparable> implements BinarySearchT
         return max(node.getRight());
 
     }
+
+    @Override
+    public int rank(final T item) {
+        return rank(root, item, noOfElementsToTheLeftOf(root));
+    }
+
+    private int rank(final Node<T> currentNode, final T value, int count) {
+
+        if (Objects.isNull(currentNode)) {
+            return count;
+        }
+
+        final int comparison = value.compareTo(currentNode.getValue());
+        if (toLeft(comparison)) {
+            count = rank(currentNode.getLeft(), value, count - 1 - noOfElementsToTheRightOf(currentNode.getLeft()));
+        } else if (toRight(comparison)) {
+            count = rank(currentNode.getRight(), value, count + 1 + noOfElementsToTheLeftOf(currentNode.getRight()));
+        } else if (comparison == 0) {
+            return count;
+        }
+
+        return count;
+    }
+
+    @Override
+    public T floor(final T item) {
+        return safeReadValueOfNode(floor(root, item, null));
+    }
+
+    private Node<T> floor(final Node<T> currentNode, final T value, final Node<T> smallest) {
+
+        if (Objects.isNull(currentNode)) {
+            return smallest;
+        }
+
+        final int comparison = value.compareTo(currentNode.getValue());
+        if (toLeft(comparison)) {
+            Node<T> smaller;
+            if(hasNoLeftChild(currentNode)) {
+                smaller = smallest;
+            } else  {
+               if(value.compareTo(currentNode.getLeft().getValue()) < 0) {
+                   smaller = smallest;
+               } else {
+                   smaller = currentNode.getLeft();
+               }
+            }
+            return floor(currentNode.getLeft(), value, smaller);
+        } else if (toRight(comparison)) {
+            return floor(currentNode.getRight(), value, currentNode);
+        }
+
+        return currentNode;
+    }
+
+    private T safeReadValueOfNode(final Node<T> node) {
+        return Objects.isNull(node) ? null : node.getValue();
+    }
+
+    @Override
+    public T ceiling(final T item) {
+        return safeReadValueOfNode(ceiling(root, item, null));
+    }
+
+    private Node<T> ceiling(final Node<T> currentNode, final T value, final Node<T> largest) {
+
+        if (Objects.isNull(currentNode)) {
+            return largest;
+        }
+
+        final int comparison = value.compareTo(currentNode.getValue());
+        if (toLeft(comparison)) {
+            return ceiling(currentNode.getLeft(), value, currentNode);
+        } else if (toRight(comparison)) {
+            Node<T> larger;
+            if (hasNoRightChild(currentNode)) {
+                larger = largest;
+            } else {
+                if (value.compareTo(currentNode.getRight().getValue()) > 0) {
+                    larger = largest;
+                } else {
+                    larger = currentNode.getRight();
+                }
+            }
+            return ceiling(currentNode.getRight(), value, larger);
+        }
+
+        return currentNode;
+    }
+
+
+    @Override
+    public T select(final int n) {
+        return safeReadValueOfNode(select(root, noOfElementsToTheLeftOf(root), n));
+    }
+
+    private Node<T> select(final Node<T> currentNode, final int indexOfNode, final int n) {
+
+        if (Objects.isNull(currentNode)) {
+            return null;
+        }
+
+        if (n < indexOfNode) {
+            return select(currentNode.getLeft(), noOfElementsToTheLeftOf(currentNode.getLeft()), n);
+        } else if (n > indexOfNode) {
+            return select(currentNode.getRight(), noOfElementsToTheLeftOf(currentNode.getRight()), n - indexOfNode - 1);
+        }
+
+        return currentNode;
+
+    }
+
+    private int noOfElementsToTheRightOf(final Node<T> node) {
+        return Objects.isNull(node) ?
+                0 : hasNoRightChild(node) ? 0 : node.getRight().getCount();
+    }
+
+    private int noOfElementsToTheLeftOf(final Node<T> node) {
+        return Objects.isNull(node) ?
+                0 : hasNoLeftChild(node) ? 0 : node.getLeft().getCount();
+    }
+
+    @Override
+    public void deleteMin() {
+        final Node<T> min = min(root);
+        if (Objects.nonNull(min)) {
+            remove(min.value);
+        }
+    }
+
+    @Override
+    public void deleteMax() {
+        final Node<T> max = max(root);
+        if (Objects.nonNull(max)) {
+            remove(max.getValue());
+        }
+    }
+
+    @Override
+    public int size(final T min, final T max) {
+
+        if (isEmpty()) {
+            return 0;
+        }
+
+        final Node<T> minNode = ceiling(root, min, null);
+        final T minValueFound = Objects.isNull(minNode) ? min() : minNode.getValue();
+        final Node<T> maxNode = floor(root, max, null);
+        final T maxValueFound = Objects.isNull(maxNode) ? max() : maxNode.getValue();
+
+        final int minIndex = indexOf(root, minValueFound, noOfElementsToTheLeftOf(root));
+        final int maxIndex = indexOf(root, maxValueFound, noOfElementsToTheLeftOf(root));
+
+        return maxIndex - minIndex + 1;
+    }
+
+    private int indexOf(final Node<T> currentNode, final T value, int currentIndex) {
+
+        if (Objects.isNull(currentNode)) {
+            return -1;
+        }
+
+        final int comparison = value.compareTo(currentNode.getValue());
+        if (toLeft(comparison)) {
+            currentIndex = indexOf(currentNode.getLeft(), value, currentIndex - 1 - noOfElementsToTheRightOf(currentNode.getLeft()));
+        } else if (toRight(comparison)) {
+            currentIndex = indexOf(currentNode.getRight(), value, currentIndex + 1 + noOfElementsToTheLeftOf(currentNode.getRight()));
+        } else if (comparison == 0) {
+            return currentIndex;
+        }
+
+        return currentIndex;
+    }
+
 
     private final static class Node<V> {
 
