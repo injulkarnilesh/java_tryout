@@ -278,27 +278,27 @@ Balanced Search Tree
 - Nodes maintain values in ordered fashion.
 - Search
     - For two node, if item to search smaller than key then go left, if larger then go right, if match hit.
-    - For three node, if smaller than left key fo left, if larger than right key go right, if in between left and right keys go to middle link, if matches with any of the keys hit.
+    - For three node, if smaller than left key go left, if larger than right key go right, if in between left and right keys go to middle link, if matches with any of the keys hit.
 - Insert
     - Into two node at bottom
         - Search for matching node, insert into the node to make it a three node
     - Into three node at bottom
         - Insert into matching three node to make it a temporary 4 Node.
         - Split 4 Node by moving middle key into parent, continue to split all 4 nodes till root.
-- Worst case log N, Best Case log<sub>3</sub> N. Guaranteed logarithmic performance for search and insert.
+- Worst case log N, Best case log<sub>3</sub> N. Guaranteed logarithmic performance for search and insert.
 
 #### Red Black Tree
 - Left leaning red black tree.
-- Represent 2-3 tree as binary search tree by using internal left leaning links to represent a 3 node.
+- Represent 2-3 tree as binary search tree by using internal left leaning red links to represent a 3 node.
 - A Binary search tree such that :
-    - Node node has two red links connected to it.
+    - No node has two red links connected to it.
     - Every path from root to null has same number of black links.
     - Red links lean left
 - Search is same as elementary binary search tree ignoring the link colors.
 - Elementary Operations
     - Left Rotation : Orient (temporarily) right leaning red link to lean left
     - Right Rotation : Orient left leaning red link to lean (temporarily) to right.
-    - Color Flip : Recolor left and right red links to black and link to current node as red represents splitting a 4 node.
+    - Color Flip : Recolor left and right red links to black and link to current node as red, represents splitting a 4 node.
 - Insert
     - Normal insert with new link as red. 
     - If current node
