@@ -265,3 +265,61 @@ Binary Search Tree
         - Delete that minimum in that right subtree
         - Update the counts
         - But leaves the tree un-symmetric.
+        
+
+Balanced Search Tree
+-------------
+
+#### 2-3 Tree
+- Allow one or two keys per node
+    - 2 Node : One Key, two children
+    - 3 Node : Two keys, three children
+- Every path from root to null link has same path length.
+- Nodes maintain values in ordered fashion.
+- Search
+    - For two node, if item to search smaller than key then go left, if larger then go right, if match hit.
+    - For three node, if smaller than left key fo left, if larger than right key go right, if in between left and right keys go to middle link, if matches with any of the keys hit.
+- Insert
+    - Into two node at bottom
+        - Search for matching node, insert into the node to make it a three node
+    - Into three node at bottom
+        - Insert into matching three node to make it a temporary 4 Node.
+        - Split 4 Node by moving middle key into parent, continue to split all 4 nodes till root.
+- Worst case log N, Best Case log<sub>3</sub> N. Guaranteed logarithmic performance for search and insert.
+
+#### Red Black Tree
+- Left leaning red black tree.
+- Represent 2-3 tree as binary search tree by using internal left leaning links to represent a 3 node.
+- A Binary search tree such that :
+    - Node node has two red links connected to it.
+    - Every path from root to null has same number of black links.
+    - Red links lean left
+- Search is same as elementary binary search tree ignoring the link colors.
+- Elementary Operations
+    - Left Rotation : Orient (temporarily) right leaning red link to lean left
+    - Right Rotation : Orient left leaning red link to lean (temporarily) to right.
+    - Color Flip : Recolor left and right red links to black and link to current node as red represents splitting a 4 node.
+- Insert
+    - Normal insert with new link as red. 
+    - If current node
+        - Has right child red and left child black, then rotate left.
+        - Left child and grand-left child are red, then rotate right.
+        - Both children red, then flip colors.
+    - On insert, go up from that node till root while checking above logic for every node on a way.
+- Height of tree <= 2 log N in worst case.
+
+#### B tree
+- Generalized 2-3 trees by allowing up to M-1 key-link pairs per node.
+- At least 2 key-link pairs at root.
+- At least M/2 key-link pairs in other nodes.
+- External nodes contain actual keys and internal nodes contain copies of keys to guide the search.
+- Search
+    - Starting from root, find interval for search key and take corespondent link till external node.
+- Insert
+    - Search for new key, insert at bottom.
+    - Split nodes with M key-link pairs on a way up the tree.
+- Search and insert for M order and N nodes takes between log<sub>M-1</sub>N and log<sub>M/2</sub>N probes.
+
+![Common Order-of-growth classification](https://raw.githubusercontent.com/injulkarnilesh/java_tryout/master/Algorithm/src/main/resources/B-Tree.png)
+
+ 
