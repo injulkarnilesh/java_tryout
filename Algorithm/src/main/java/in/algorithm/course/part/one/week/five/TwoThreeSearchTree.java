@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class TwoThreeSearchTree<T extends Comparable> implements SearchTree<T> {
 
-    Node<T> root;
+    private Node<T> root;
 
     private TwoThreeSearchTree() {
         root = null;
@@ -304,9 +304,9 @@ public class TwoThreeSearchTree<T extends Comparable> implements SearchTree<T> {
 
     public static class TwoNode<E> extends Node<E> {
 
-        final E value;
-        Node<E> left;
-        Node<E> right;
+        private final E value;
+        private Node<E> left;
+        private Node<E> right;
 
         private TwoNode(final E value) {
             this.value = value;
@@ -349,12 +349,12 @@ public class TwoThreeSearchTree<T extends Comparable> implements SearchTree<T> {
     }
 
     public static class ThreeNode<E> extends Node<E> {
-        final E leftValue;
-        final E rightValue;
+        private final E leftValue;
+        private final E rightValue;
 
-        Node<E> left;
-        Node<E> middle;
-        Node<E> right;
+        private Node<E> left;
+        private Node<E> middle;
+        private Node<E> right;
 
         private ThreeNode(final E leftValue, final E rightValue) {
             this.leftValue = leftValue;
@@ -410,14 +410,14 @@ public class TwoThreeSearchTree<T extends Comparable> implements SearchTree<T> {
 
     public static class FourNode<E> extends Node<E> {
 
-        final E leftValue;
-        final E middleValue;
-        final E rightValue;
+        private final E leftValue;
+        private final E middleValue;
+        private final E rightValue;
 
-        Node<E> leftMost;
-        Node<E> middleLeft;
-        Node<E> middleRight;
-        Node<E> rightMost;
+        private Node<E> leftMost;
+        private Node<E> middleLeft;
+        private Node<E> middleRight;
+        private Node<E> rightMost;
 
         private FourNode(final E leftValue, final E middleValue, final E rightValue) {
             this.leftValue = leftValue;
