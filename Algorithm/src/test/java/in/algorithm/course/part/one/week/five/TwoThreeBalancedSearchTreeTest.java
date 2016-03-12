@@ -14,13 +14,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class TwoThreeSearchTreeTest {
+public class TwoThreeBalancedSearchTreeTest {
 
-    private SearchTree<Integer> tree;
+    private BalancedSearchTree<Integer> tree;
 
     @Before
     public void setUp() {
-        tree = TwoThreeSearchTree.createNew();
+        tree = TwoThreeBalancedSearchTree.createNew();
     }
 
     @Test
@@ -29,13 +29,13 @@ public class TwoThreeSearchTreeTest {
 
         tree.insert(item);
 
-        final TwoThreeSearchTree.Node<Integer> root = getRootNode();
+        final TwoThreeBalancedSearchTree.Node<Integer> root = getRootNode();
         assertNotNull(root);
         assertTwoNodeAndValue(root, item);
     }
 
-    private TwoThreeSearchTree.Node<Integer> getRootNode() {
-        return ((TwoThreeSearchTree) tree).root();
+    private TwoThreeBalancedSearchTree.Node<Integer> getRootNode() {
+        return ((TwoThreeBalancedSearchTree) tree).root();
     }
 
 
@@ -47,7 +47,7 @@ public class TwoThreeSearchTreeTest {
         tree.insert(firstItem);
         tree.insert(secondItem);
 
-        final TwoThreeSearchTree.Node<Integer> root = getRootNode();
+        final TwoThreeBalancedSearchTree.Node<Integer> root = getRootNode();
         assertFalse(root.isTwoNode());
         assertThreeNodeWithValues(root, Integer.valueOf(Math.min(firstItem, secondItem)), Integer.valueOf(Math.max(firstItem, secondItem)));
     }
@@ -62,14 +62,14 @@ public class TwoThreeSearchTreeTest {
         tree.insert(secondItem);
         tree.insert(thirdItem);
 
-        final TwoThreeSearchTree.Node<Integer> root = getRootNode();
+        final TwoThreeBalancedSearchTree.Node<Integer> root = getRootNode();
         assertTrue(root.isTwoNode());
         assertFalse(root.isThreeNode());
 
         assertEquals(middle(firstItem, secondItem, thirdItem), root.asTwoNode().getValue());
 
-        final TwoThreeSearchTree.Node<Integer> leftChild = root.asTwoNode().getLeft();
-        final TwoThreeSearchTree.Node<Integer> rightChild = root.asTwoNode().getRight();
+        final TwoThreeBalancedSearchTree.Node<Integer> leftChild = root.asTwoNode().getLeft();
+        final TwoThreeBalancedSearchTree.Node<Integer> rightChild = root.asTwoNode().getRight();
 
         assertEquals(smallest(firstItem, secondItem, thirdItem), leftChild.asTwoNode().getValue());
         assertEquals(largest(firstItem, secondItem, thirdItem), rightChild.asTwoNode().getValue());
@@ -103,7 +103,7 @@ public class TwoThreeSearchTreeTest {
         tree.insert(leftChildValueFifteen);
         tree.insert(rightChildValueFortyFive);
 
-        TwoThreeSearchTree.Node<Integer> root = getRootNode();
+        TwoThreeBalancedSearchTree.Node<Integer> root = getRootNode();
         assertTwoNodeAndValue(root, rootItemThirty);
         assertEquals(leftChildValueFifteen, root.asTwoNode().getLeft().asTwoNode().getValue());
         assertEquals(rightChildValueFortyFive, root.asTwoNode().getRight().asTwoNode().getValue());
@@ -114,15 +114,15 @@ public class TwoThreeSearchTreeTest {
         tree.insert(newLeftChildValueTwenty);
         tree.insert(newRightChildValueForty);
 
-        final TwoThreeSearchTree.Node<Integer> left = root.asTwoNode().getLeft();
-        final TwoThreeSearchTree.Node<Integer> right = root.asTwoNode().getRight();
+        final TwoThreeBalancedSearchTree.Node<Integer> left = root.asTwoNode().getLeft();
+        final TwoThreeBalancedSearchTree.Node<Integer> right = root.asTwoNode().getRight();
 
         assertThreeNodeWithValues(left, leftChildValueFifteen, newLeftChildValueTwenty);
 
         assertThreeNodeWithValues(right, newRightChildValueForty, rightChildValueFortyFive);
     }
 
-    private void assertThreeNodeWithValues(final TwoThreeSearchTree.Node<Integer> node, final Integer leftValue, final Integer rightValue) {
+    private void assertThreeNodeWithValues(final TwoThreeBalancedSearchTree.Node<Integer> node, final Integer leftValue, final Integer rightValue) {
         assertTrue(node.isThreeNode());
         assertEquals(leftValue, node.asThreeNode().getLeftValue());
         assertEquals(rightValue, node.asThreeNode().getRightValue());
@@ -150,12 +150,12 @@ public class TwoThreeSearchTreeTest {
 
         tree.insert(valueToSplitRightChildFifty);
 
-        TwoThreeSearchTree.Node<Integer> root = getRootNode();
+        TwoThreeBalancedSearchTree.Node<Integer> root = getRootNode();
         assertThreeNodeWithValues(root, rootItemThirty, valueToSplitRightChildFifty);
 
-        final TwoThreeSearchTree.Node<Integer> left = root.asThreeNode().getLeft();
-        final TwoThreeSearchTree.Node<Integer> middle = root.asThreeNode().getMiddle();
-        final TwoThreeSearchTree.Node<Integer> right = root.asThreeNode().getRight();
+        final TwoThreeBalancedSearchTree.Node<Integer> left = root.asThreeNode().getLeft();
+        final TwoThreeBalancedSearchTree.Node<Integer> middle = root.asThreeNode().getMiddle();
+        final TwoThreeBalancedSearchTree.Node<Integer> right = root.asThreeNode().getRight();
 
         assertThreeNodeWithValues(left, newLeftChildValueTen, leftChildValueFifteen);
 
@@ -167,16 +167,16 @@ public class TwoThreeSearchTreeTest {
 
         tree.insert(valueToSplitLeftChildTwenty);
 
-        final TwoThreeSearchTree.Node<Integer> newRoot = getRootNode();
+        final TwoThreeBalancedSearchTree.Node<Integer> newRoot = getRootNode();
         assertTrue(newRoot.isTwoNode());
 
-        final TwoThreeSearchTree.Node<Integer> newLeftNode = newRoot.asTwoNode().getLeft();
+        final TwoThreeBalancedSearchTree.Node<Integer> newLeftNode = newRoot.asTwoNode().getLeft();
         assertTrue(newLeftNode.isTwoNode());
         assertTwoNodeAndValue(newLeftNode, leftChildValueFifteen);
         assertTwoNodeAndValue(newLeftNode.asTwoNode().getLeft(), newLeftChildValueTen);
         assertTwoNodeAndValue(newLeftNode.asTwoNode().getRight(), valueToSplitLeftChildTwenty);
 
-        final TwoThreeSearchTree.Node<Integer> newRightNode = newRoot.asTwoNode().getRight();
+        final TwoThreeBalancedSearchTree.Node<Integer> newRightNode = newRoot.asTwoNode().getRight();
         assertTrue(newRightNode.isTwoNode());
         assertTwoNodeAndValue(newRightNode, valueToSplitRightChildFifty);
         assertTwoNodeAndValue(newRightNode.asTwoNode().getLeft(), rightChildValueFortyFive);
@@ -184,7 +184,7 @@ public class TwoThreeSearchTreeTest {
 
     }
 
-    private void assertTwoNodeAndValue(final TwoThreeSearchTree.Node<Integer> node, final Integer value) {
+    private void assertTwoNodeAndValue(final TwoThreeBalancedSearchTree.Node<Integer> node, final Integer value) {
         assertTrue(node.isTwoNode());
         assertEquals(value, node.asTwoNode().getValue());
     }

@@ -2,7 +2,7 @@ package in.algorithm.course.part.one.week.five;
 
 import java.util.List;
 
-public interface SearchTree<T extends Comparable> {
+public interface BalancedSearchTree<T extends Comparable> {
 
     void insert(T item);
 

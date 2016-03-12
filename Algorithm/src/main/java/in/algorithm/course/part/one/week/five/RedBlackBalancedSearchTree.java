@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RedBlackSearchTree<T extends Comparable> implements SearchTree<T> {
+public class RedBlackBalancedSearchTree<T extends Comparable> implements BalancedSearchTree<T> {
 
     private Node<T> root;
 
-    private RedBlackSearchTree() {
+    private RedBlackBalancedSearchTree() {
         root = null;
     }
 
-    public static SearchTree createNew() {
-        return new RedBlackSearchTree();
+    public static BalancedSearchTree createNew() {
+        return new RedBlackBalancedSearchTree();
     }
 
     @Override

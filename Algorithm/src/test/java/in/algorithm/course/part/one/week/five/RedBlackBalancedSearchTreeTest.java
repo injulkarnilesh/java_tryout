@@ -1,7 +1,7 @@
 package in.algorithm.course.part.one.week.five;
 
-import in.algorithm.course.part.one.week.five.RedBlackSearchTree.LinkType;
-import in.algorithm.course.part.one.week.five.RedBlackSearchTree.Node;
+import in.algorithm.course.part.one.week.five.RedBlackBalancedSearchTree.LinkType;
+import in.algorithm.course.part.one.week.five.RedBlackBalancedSearchTree.Node;
 import in.algorithm.course.part.one.week.two.sort.application.KnuthShuffle;
 import in.algorithm.course.util.RandomBoolean;
 import in.algorithm.course.util.RandomInt;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class RedBlackSearchTreeTest {
+public class RedBlackBalancedSearchTreeTest {
 
 
     public static final Integer ROOT_VALUE_FORTY = 40;
@@ -25,13 +25,13 @@ public class RedBlackSearchTreeTest {
     public static final Integer LEFT_IN_RIGHT_SUB_TREE_FIFTY = 50;
     public static final Integer RIGHT_IN_RIGHT_SUB_TREE_SEVENTY = 70;
 
-    private SearchTree<Integer> tree;
-    private RedBlackSearchTree<Integer> redBlackTree;
+    private BalancedSearchTree<Integer> tree;
+    private RedBlackBalancedSearchTree<Integer> redBlackTree;
 
     @Before
     public void setUp() {
-        tree = RedBlackSearchTree.createNew();
-        redBlackTree = (RedBlackSearchTree) tree;
+        tree = RedBlackBalancedSearchTree.createNew();
+        redBlackTree = (RedBlackBalancedSearchTree) tree;
     }
 
     @Test

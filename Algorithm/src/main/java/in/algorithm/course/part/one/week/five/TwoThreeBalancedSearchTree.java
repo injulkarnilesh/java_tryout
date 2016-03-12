@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class TwoThreeSearchTree<T extends Comparable> implements SearchTree<T> {
+public class TwoThreeBalancedSearchTree<T extends Comparable> implements BalancedSearchTree<T> {
 
     private Node<T> root;
 
-    private TwoThreeSearchTree() {
+    private TwoThreeBalancedSearchTree() {
         root = null;
     }
 
-    public static SearchTree createNew() {
-        return new TwoThreeSearchTree();
+    public static BalancedSearchTree createNew() {
+        return new TwoThreeBalancedSearchTree();
     }
 
     @Override
