@@ -13,7 +13,7 @@ public class Point {
     private final int d;
     private final int[] dimensions;
 
-    private Point(final int d) {
+    protected Point(final int d) {
         this.d = d;
         this.dimensions = new int[d];
     }
@@ -29,7 +29,7 @@ public class Point {
         return dimensions[n];
     }
 
-    void setCoOrdinate(final int dimension, final int coOrdinate) {
+    protected void setCoOrdinate(final int dimension, final int coOrdinate) {
         this.dimensions[dimension] = coOrdinate;
     }
 
