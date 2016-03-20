@@ -1,4 +1,4 @@
-package in.algorithm.course.part.one.week.five;
+package in.algorithm.course.part.one.week.five.balancedsearchtree;
 
 import java.util.List;
 

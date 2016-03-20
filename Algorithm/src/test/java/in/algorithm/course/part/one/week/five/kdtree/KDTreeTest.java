@@ -1,6 +1,10 @@
-package in.algorithm.course.part.one.week.five.application;
+package in.algorithm.course.part.one.week.five.kdtree;
 
-import in.algorithm.course.part.one.week.five.application.KDTreeImpl.Node;
+import in.algorithm.course.part.one.week.five.kdtree.KDTree;
+import in.algorithm.course.part.one.week.five.kdtree.KDTreeImpl;
+import in.algorithm.course.part.one.week.five.kdtree.KDTreeImpl.Node;
+import in.algorithm.course.part.one.week.five.kdtree.Point;
+import in.algorithm.course.part.one.week.five.kdtree.PointBuilder;
 import in.algorithm.course.util.RandomInt;
 import org.junit.Before;
 import org.junit.Test;

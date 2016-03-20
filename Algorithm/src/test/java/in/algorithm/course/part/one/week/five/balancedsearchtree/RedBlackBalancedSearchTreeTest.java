@@ -1,7 +1,7 @@
-package in.algorithm.course.part.one.week.five;
+package in.algorithm.course.part.one.week.five.balancedsearchtree;
 
-import in.algorithm.course.part.one.week.five.RedBlackBalancedSearchTree.LinkType;
-import in.algorithm.course.part.one.week.five.RedBlackBalancedSearchTree.Node;
+import in.algorithm.course.part.one.week.five.balancedsearchtree.RedBlackBalancedSearchTree.LinkType;
+import in.algorithm.course.part.one.week.five.balancedsearchtree.RedBlackBalancedSearchTree.Node;
 import in.algorithm.course.part.one.week.two.sort.application.KnuthShuffle;
 import in.algorithm.course.util.RandomBoolean;
 import in.algorithm.course.util.RandomInt;

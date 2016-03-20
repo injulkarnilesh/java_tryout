@@ -1,5 +1,7 @@
-package in.algorithm.course.part.one.week.five.application;
+package in.algorithm.course.part.one.week.five.kdtree;
 
+import in.algorithm.course.part.one.week.five.kdtree.Point;
+import in.algorithm.course.part.one.week.five.kdtree.PointBuilder;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

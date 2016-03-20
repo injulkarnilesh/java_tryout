@@ -1,4 +1,4 @@
-package in.algorithm.course.part.one.week.five.application;
+package in.algorithm.course.part.one.week.five.kdtree;
 
 public interface KDTree {
 
