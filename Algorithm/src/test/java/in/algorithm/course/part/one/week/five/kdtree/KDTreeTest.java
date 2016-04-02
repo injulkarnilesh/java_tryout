@@ -1,10 +1,6 @@
 package in.algorithm.course.part.one.week.five.kdtree;
 
-import in.algorithm.course.part.one.week.five.kdtree.KDTree;
-import in.algorithm.course.part.one.week.five.kdtree.KDTreeImpl;
-import in.algorithm.course.part.one.week.five.kdtree.KDTreeImpl.Node;
-import in.algorithm.course.part.one.week.five.kdtree.Point;
-import in.algorithm.course.part.one.week.five.kdtree.PointBuilder;
+import in.algorithm.course.part.one.week.five.kdtree.KDTree.Node;
 import in.algorithm.course.util.RandomInt;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,17 +8,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class KDTreeTest {
 
     private KDTree tree;
-    private KDTreeImpl kdTree;
 
     @Before
     public void setUp() throws Exception {
         tree = KDTreeImpl.createNewForDimensionsOf(2);
-        kdTree = (KDTreeImpl) tree;
     }
 
     @Test
@@ -45,7 +40,7 @@ public class KDTreeTest {
     }
 
     private Node getRoot() {
-        return kdTree.getRoot();
+        return tree.getRoot();
     }
 
     @Test
@@ -226,7 +221,18 @@ public class KDTreeTest {
     @Test
     public void shouldCheckIfEmpty() throws Exception {
         assertTrue(tree.isEmpty());
-        insertPoints(tree, create2DPoint(10, 20));
+        insertPoints(tree, create2DPoint(RandomInt.next(), RandomInt.next()));
         assertFalse(tree.isEmpty());
+    }
+
+    @Test
+    public void shouldGetRoot() throws Exception {
+        assertNull(tree.getRoot());
+
+        final Point point = create2DPoint(RandomInt.next(), RandomInt.next());
+
+        tree.insert(point);
+
+        assertEquals(point, tree.getRoot().getPoint());
     }
 }
