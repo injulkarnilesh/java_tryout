@@ -323,3 +323,19 @@ Balanced Search Tree
 ![Common Order-of-growth classification](https://raw.githubusercontent.com/injulkarnilesh/java_tryout/master/Algorithm/src/main/resources/B-Tree.png)
 
  
+
+Symbol Table Collision Resolution Techniques
+-------------
+- Collision happens when multiples distinct keys are hashed to same index. 
+
+#### Separate Chaining
+- Use array of M linked lists.
+- Hash : Map key hashcode to index i of the array [0 to (M-1)]
+- Insert : Put key value node at front of the i<sup>th</sup> linked list if key not in the list, if present update the value.
+- Search : Search for match of key in i<sup>th</sup> linked list.
+
+#### Linear Probing
+- Use array of size M > N, where N is number of keys to be inserted.
+- Hash : Map key hashcode to index i of the array [0 to (M-1)]
+- Insert : Put key-value at index i if free, if not try i+1, i+2 etc till there is no free spot. If match found update the value.
+- Search : Search at index i, if not matched try i+1, i+2 etc till free spot found or array is all full.
