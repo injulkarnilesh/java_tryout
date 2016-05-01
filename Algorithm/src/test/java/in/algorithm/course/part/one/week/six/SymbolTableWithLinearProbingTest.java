@@ -139,6 +139,16 @@ public class SymbolTableWithLinearProbingTest {
         assertNull(symbolTable.get(getCollidingKey(key, RandomInt.next(1, 9))));
     }
 
+    @Test
+    public void shouldGetNullForNoMatchAfterAllSearched() throws Exception {
+        final int key = RandomInt.next(1, SIZE);
+        for (int  i = 0; i < SIZE; i++) {
+            symbolTable.put(key + (i * SIZE), RandomString.next(10));
+        }
+
+        assertNull(symbolTable.get(SIZE));
+    }
+
     @Test( expected = SymbolTableWithLinearProbing.SymbolTableOutOfSizeException.class )
     public void shouldThrowExceptionOnKeysReachSize() throws Exception {
         for (int i = 0; i < SIZE + 10; i++) {
