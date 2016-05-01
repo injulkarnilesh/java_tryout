@@ -9,15 +9,14 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class SymbolTableWithSeparateChainingTest {
-
+public class SymbolTableWithLinearProbingTest {
     private static final int SIZE = 100;
 
     private SymbolTable<Integer, String> symbolTable;
 
     @Before
     public void setUp() throws Exception {
-        symbolTable = SymbolTableWithSeparateChaining.createNew(SIZE);
+        symbolTable = SymbolTableWithLinearProbing.createNew(SIZE);
     }
 
     @Test
@@ -90,7 +89,7 @@ public class SymbolTableWithSeparateChainingTest {
 
     @Test
     public void shouldPutGetAndUpdateRandomData() throws Exception {
-        final Integer[] keys = new Integer[SIZE];
+        final Integer[] keys = new Integer[SIZE/2];
         for (int i = 0; i < keys.length; i++) {
             keys[i] = i;
         }
@@ -138,6 +137,13 @@ public class SymbolTableWithSeparateChainingTest {
         symbolTable.put(key, RandomString.next(10));
 
         assertNull(symbolTable.get(getCollidingKey(key, RandomInt.next(1, 9))));
+    }
+
+    @Test( expected = SymbolTableWithLinearProbing.SymbolTableOutOfSizeException.class )
+    public void shouldThrowExceptionOnKeysReachSize() throws Exception {
+        for (int i = 0; i < SIZE + 10; i++) {
+            symbolTable.put(i, RandomString.next(10));
+        }
     }
 
     @Test( expected = SymbolTable.NullNotSupportedException.class )

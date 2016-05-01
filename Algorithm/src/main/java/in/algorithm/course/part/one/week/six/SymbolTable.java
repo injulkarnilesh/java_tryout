@@ -6,4 +6,8 @@ public interface SymbolTable<Key, Value> {
 
     Value get(Key key);
 
+    public class NullNotSupportedException extends RuntimeException {
+
+    }
+
 }
