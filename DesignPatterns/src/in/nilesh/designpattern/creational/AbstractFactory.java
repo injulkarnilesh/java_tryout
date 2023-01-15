@@ -1,5 +1,13 @@
 package in.nilesh.designpattern.creational;
 
+/*
+Factory of Factory.
+OR
+Abstract Factory is a creational design pattern that 
+lets you produce families of related objects without specifying their concrete classes.
+*/
+
+
 abstract class GUIFacatory{
 	public abstract Button createButton();
 	public abstract DropDown createDropDown();
