@@ -8,6 +8,9 @@ which can be developed independently of each other.
 
 It avoids creating n*m classes, by separating n cobinations into 1 hierarchy and m combinations into another.
 Then you refer to one hierarchy from another through interface.
+
+The "abstraction" defines the interface for the "control" part of the two class hierarchies. 
+It maintains a reference to an object of the "implementation" hierarchy and  "delegates" all of the real work to this object.
 */
 
 abstract class Remote {
