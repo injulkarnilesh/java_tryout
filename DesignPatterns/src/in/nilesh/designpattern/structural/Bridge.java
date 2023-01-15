@@ -3,7 +3,7 @@ package in.nilesh.designpattern.structural;
 /*
 Bridge is a structural design pattern 
 that lets you split a large class or a set of closely related classes into two separate hierarchies
-abstraction and implementation
+1. abstraction and 2. implementation
 which can be developed independently of each other.
 
 It avoids creating n*m classes, by separating n cobinations into 1 hierarchy and m combinations into another.
