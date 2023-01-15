@@ -1,5 +1,9 @@
 package in.nilesh.designpattern.structural;
 
+/*
+Adapter is a structural design pattern that allows objects with incompatible interfaces to collaborate.
+*/
+
 class LegacyLine {
 	public void draw(int x1, int y1, int x2, int y2){
 		System.out.println("LEGACY : DRAWING LINE FROM (" + x1 + ", " + y1+") TO (" + x2 + ", " + y2 + ")");
