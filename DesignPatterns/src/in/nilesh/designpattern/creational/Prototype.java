@@ -4,6 +4,10 @@ import java.lang.Cloneable;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+Prototype is a creational design pattern that lets you copy existing objects without making your code dependent on their classes.
+*/
+
 interface Animal extends Cloneable{
 	public Animal cloan();
 }
