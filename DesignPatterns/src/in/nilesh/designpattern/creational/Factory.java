@@ -2,6 +2,11 @@ package in.nilesh.designpattern.creational;
 
 import in.nilesh.designpattern.exception.WrongProductIDException;
 
+/*
+Factory design pattern enables loose coupling between client code and different implementations of a target type.
+It keeps logic of selecting implementation on some conditions in one place that is factory.
+*/
+
 interface Product{
 	void printProductType();
 }
