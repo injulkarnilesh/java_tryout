@@ -1,5 +1,11 @@
 package in.nilesh.designpattern.behavioral;
 
+/*
+Iterator is a behavioral design pattern that lets you traverse elements of a collection without 
+exposing its underlying representation (list, stack, tree, etc.).
+*/
+
+
 interface Iterator<T> {
 	public boolean hasNext();
 
