@@ -1,6 +1,17 @@
 package in.nilesh.designpattern.behavioral;
 
 /*
+Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.
+
+The Visitor pattern uses a technique called "Double Dispatch", 
+which helps to execute the proper method on an object without cumbersome conditionals. 
+Instead of letting the client select a proper version of the method to call, 
+how about we delegate this choice to objects we’re passing to the visitor as an argument? 
+Since the objects know their own classes, they’ll be able to pick a proper method on the visitor less awkwardly. 
+They “accept” a visitor and tell it what visiting method should be executed.
+*/
+
+/*
  * Visitor Interface
  */
 interface OfferVisitor {
