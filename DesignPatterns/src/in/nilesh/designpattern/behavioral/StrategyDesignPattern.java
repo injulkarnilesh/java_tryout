@@ -3,6 +3,12 @@ package in.nilesh.designpattern.behavioral;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Strategy is a behavioral design pattern that lets you define a family of algorithms, 
+put each of them into a separate class, and make their objects interchangeable.
+*/
+
+
 interface PaymentStrategy {
 	public boolean pay(double amount);
 }
