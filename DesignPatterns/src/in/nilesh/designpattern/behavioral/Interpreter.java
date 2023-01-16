@@ -3,6 +3,12 @@ package in.nilesh.designpattern.behavioral;
 import java.util.Stack;
 
 /*
+Iterator is behavioral design pattern, that lets you interprete text or some other formated data in an object oriented way.
+It keeps track of context which is holding all that is needed and all that is processed so far.
+There are multiple implementations of expressions which interprete context according to their behaviors.
+*/
+
+/*
  * Context holding current status of input and output
  */
 class Context {
