@@ -1,6 +1,19 @@
 package in.nilesh.designpattern.behavioral;
 
 /*
+Command is a behavioral design pattern that turns a request into a stand-alone object that 
+contains all information about the request. 
+This transformation lets you pass requests as a method arguments, 
+delay or queue a request’s execution, 
+and support undoable operations.
+
+Since the command execution method doesn’t have any parameters, 
+how would we pass the request details to the receiver? 
+
+It turns out the command should be either pre-configured with this data, or capable of getting it on its own.
+*/
+
+/*
  * Receiver
  */
 class StockTrade{
