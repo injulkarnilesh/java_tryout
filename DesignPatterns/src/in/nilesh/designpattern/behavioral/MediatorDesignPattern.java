@@ -3,6 +3,12 @@ package in.nilesh.designpattern.behavioral;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Mediator is a behavioral design pattern that lets you reduce chaotic dependencies between objects.
+The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.
+*/
+
+
 class StockOffer {
 	private String colleagueCode;
 	private int stockShares;
